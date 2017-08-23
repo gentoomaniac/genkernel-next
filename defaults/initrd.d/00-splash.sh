@@ -218,7 +218,7 @@ _plymouth_init() {
     local other=
     read consoledev other < /sys/class/tty/console/active
     consoledev=${consoledev:-tty0}
-    "${PLYMOUTHD_BIN}" --attach-to-session --pid-file /run/plymouth/pid \
+    "${PLYMOUTHD_BIN}" ${PLYMOUTH_OPTS} --attach-to-session --pid-file /run/plymouth/pid \
         || {
         PLYMOUTH_FAILURE=1;
         return 1;

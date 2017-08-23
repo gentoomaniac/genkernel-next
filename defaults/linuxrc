@@ -139,6 +139,11 @@ for x in ${CMDLINE}; do
         splash=*)
             FBSPLASH=1
         ;;
+        plymouth:*)
+            for popt in $(tr ":" " " <<<${x#*:}); do
+                PLYMOUTH_OPTS="${PLYMOUTH_OPTS} --${popt}"
+            done
+        ;;
         lvmraid=*)
             RAID_DEVICES="${x#*=}"
             RAID_DEVICES="$(echo ${RAID_DEVICES} | sed -e "s/,/ /g")"
